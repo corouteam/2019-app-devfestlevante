@@ -94,10 +94,12 @@ class SplashScreenWidget extends StatelessWidget {
     GoogleSignInAccount googleUser = await _googleSignIn.signIn();
     GoogleSignInAuthentication googleAuth = await googleUser.authentication;
 
-    FirebaseUser user = await _auth.signInWithGoogle(
+    final AuthCredential credential = GoogleAuthProvider.getCredential(
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
+
+    final FirebaseUser user = (await _auth.signInWithCredential(credential)).user;
 
     // Login done, create user in Firestore
     UserRepository repo = UserRepository(user.uid);
