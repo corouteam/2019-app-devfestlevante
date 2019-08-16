@@ -1,198 +1,45 @@
 {
   "project_info": {
-    "project_number": "792402634639",
-    "firebase_url": "https://devfesttest-f5c73.firebaseio.com",
-    "project_id": "devfesttest-f5c73",
-    "storage_bucket": "devfesttest-f5c73.appspot.com"
+    "project_number": "343750543270",
+    "firebase_url": "https://devfest-levante-2019.firebaseio.com",
+    "project_id": "devfest-levante-2019",
+    "storage_bucket": "devfest-levante-2019.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:792402634639:android:6e908c17fafbebfe",
+        "mobilesdk_app_id": "1:343750543270:android:23bf9cfafc8a64df",
         "android_client_info": {
-          "package_name": "com.example.devfestlevante"
+          "package_name": "com.github.corouteam.devfestlevante2019"
         }
       },
       "oauth_client": [
         {
-          "client_id": "792402634639-u2o5ks6phq89109j59j9quhdc6j9b9ql.apps.googleusercontent.com",
+          "client_id": "343750543270-u7clkbh99vo15t8b30b9c3uhcu2g4bhr.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.devfestlevante",
-            "certificate_hash": "e010d8fdc13c2bf26f33562a3c01295d067086cc"
+            "package_name": "com.github.corouteam.devfestlevante2019",
+            "certificate_hash": "6ed7e3f301845cf67ee132ac4337b69efcf5b3ee"
           }
         },
         {
-          "client_id": "792402634639-7dtlkbp3avhhvf2cq0cv5gel057f268c.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.devfestlevante",
-            "certificate_hash": "c45902a5c1629140e1a4b4beda6ab5b2fec5568a"
-          }
-        },
-        {
-          "client_id": "792402634639-tklf22cih2iqirt9kid1f03r3m83jcku.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.devfestlevante",
-            "certificate_hash": "4f41d468cf8991d555d776ce1dac6becd8709524"
-          }
-        },
-        {
-          "client_id": "792402634639-a4mtaemsa7434s5lcq089ls9gs4co7hj.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.devfestlevante",
-            "certificate_hash": "165c2773b9338eecf7260cccec5f146cffa03712"
-          }
-        },
-        {
-          "client_id": "792402634639-d0hleaj6fkdj9qq8rb36o59mpj4a3ni2.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.devfestlevante",
-            "certificate_hash": "2bda332feaec133d08618a0f6cc0fe2da68e32b9"
-          }
-        },
-        {
-          "client_id": "792402634639-8t5rnc2shij91cfd0n1hd4jf3r3aogth.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.devfestlevante",
-            "certificate_hash": "1688d954e8a4cda8e2d6441225f985fef7306f6d"
-          }
-        },
-        {
-          "client_id": "792402634639-otr476vh4bboas35tn53b5urbirtkt6q.apps.googleusercontent.com",
+          "client_id": "343750543270-lv66um551ee5srbre1ff7to3i93vp56f.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCh7k73iaLCii_8yP_hdO4cf-4sSGdBx2U"
+          "current_key": "AIzaSyDybfa4ZLuA7AC13TRl0OXvfZEFdhauUks"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "792402634639-otr476vh4bboas35tn53b5urbirtkt6q.apps.googleusercontent.com",
+              "client_id": "343750543270-lv66um551ee5srbre1ff7to3i93vp56f.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "792402634639-vif7q24onl2fdk38h727m8bj6j3lk2kq.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.github.twocoffeesoneteam.devfestlevante2018"
-              }
             }
           ]
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:792402634639:android:8c1d296441328bee",
-        "android_client_info": {
-          "package_name": "com.github.twocoffeesoneteam.devfestlevante2018"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "792402634639-i8tr4eratq12lu3jike70971967h1hc1.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.github.twocoffeesoneteam.devfestlevante2018",
-            "certificate_hash": "165c2773b9338eecf7260cccec5f146cffa03712"
-          }
-        },
-        {
-          "client_id": "792402634639-pkkhig9dc3o973ci9rv7284r9oclt2ok.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.github.twocoffeesoneteam.devfestlevante2018",
-            "certificate_hash": "4f41d468cf8991d555d776ce1dac6becd8709524"
-          }
-        },
-        {
-          "client_id": "792402634639-2buln0u85a4hqmomr6nc8vb0ob21r0te.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.github.twocoffeesoneteam.devfestlevante2018",
-            "certificate_hash": "c45902a5c1629140e1a4b4beda6ab5b2fec5568a"
-          }
-        },
-        {
-          "client_id": "792402634639-jhca07dkt139jookcagna4s6ljpgvp88.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.github.twocoffeesoneteam.devfestlevante2018",
-            "certificate_hash": "e010d8fdc13c2bf26f33562a3c01295d067086cc"
-          }
-        },
-        {
-          "client_id": "792402634639-03kcdaudm2btl2gbc75h1sksatas2phe.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.github.twocoffeesoneteam.devfestlevante2018",
-            "certificate_hash": "2bda332feaec133d08618a0f6cc0fe2da68e32b9"
-          }
-        },
-        {
-          "client_id": "792402634639-shli15sldjsqvnmigp8vvm8ttsp6p2o2.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.github.twocoffeesoneteam.devfestlevante2018",
-            "certificate_hash": "1688d954e8a4cda8e2d6441225f985fef7306f6d"
-          }
-        },
-        {
-          "client_id": "792402634639-o8u7sken3878sfgdlef71ruh1656m20t.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.github.twocoffeesoneteam.devfestlevante2018",
-            "certificate_hash": "9521853ac8554304ba13bea825cfcb716b53e6f0"
-          }
-        },
-        {
-          "client_id": "792402634639-otr476vh4bboas35tn53b5urbirtkt6q.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCh7k73iaLCii_8yP_hdO4cf-4sSGdBx2U"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "792402634639-otr476vh4bboas35tn53b5urbirtkt6q.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "792402634639-vif7q24onl2fdk38h727m8bj6j3lk2kq.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.github.twocoffeesoneteam.devfestlevante2018"
-              }
-            }
-          ]
-        },
-        "ads_service": {
-          "status": 2
         }
       }
     }

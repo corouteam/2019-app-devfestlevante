@@ -1,6 +1,6 @@
-import 'package:devfest_levante_2018/model/DevFestUser.dart';
-import 'package:devfest_levante_2018/ui/HomePage.dart';
-import 'package:devfest_levante_2018/repository/UserRepository.dart';
+import 'package:devfest_levante_2019/model/DevFestUser.dart';
+import 'package:devfest_levante_2019/ui/HomePage.dart';
+import 'package:devfest_levante_2019/repository/UserRepository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

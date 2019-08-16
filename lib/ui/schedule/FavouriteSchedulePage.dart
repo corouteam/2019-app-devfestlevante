@@ -1,13 +1,13 @@
-import 'package:devfest_levante_2018/model/DevFestUser.dart';
-import 'package:devfest_levante_2018/repository/ActivitiesRepository.dart';
-import 'package:devfest_levante_2018/model/DevFestActivity.dart';
-import 'package:devfest_levante_2018/model/DevFestSpeaker.dart';
-import 'package:devfest_levante_2018/repository/SpeakersRepository.dart';
-import 'package:devfest_levante_2018/repository/UserRepository.dart';
-import 'package:devfest_levante_2018/ui/schedule/TalkPage.dart';
-import 'package:devfest_levante_2018/utils/ColorUtils.dart';
-import 'package:devfest_levante_2018/utils/DateTimeHelper.dart';
-import 'package:devfest_levante_2018/utils/LoadingWidget.dart';
+import 'package:devfest_levante_2019/model/DevFestUser.dart';
+import 'package:devfest_levante_2019/repository/ActivitiesRepository.dart';
+import 'package:devfest_levante_2019/model/DevFestActivity.dart';
+import 'package:devfest_levante_2019/model/DevFestSpeaker.dart';
+import 'package:devfest_levante_2019/repository/SpeakersRepository.dart';
+import 'package:devfest_levante_2019/repository/UserRepository.dart';
+import 'package:devfest_levante_2019/ui/schedule/TalkPage.dart';
+import 'package:devfest_levante_2019/utils/ColorUtils.dart';
+import 'package:devfest_levante_2019/utils/DateTimeHelper.dart';
+import 'package:devfest_levante_2019/utils/LoadingWidget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 

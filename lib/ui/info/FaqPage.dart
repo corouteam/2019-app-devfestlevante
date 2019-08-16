@@ -1,7 +1,7 @@
-import 'package:devfest_levante_2018/model/DevFestFaq.dart';
-import 'package:devfest_levante_2018/repository/FaqRepository.dart';
-import 'package:devfest_levante_2018/utils/UrlHelper.dart';
-import 'package:devfest_levante_2018/utils/LoadingWidget.dart';
+import 'package:devfest_levante_2019/model/DevFestFaq.dart';
+import 'package:devfest_levante_2019/repository/FaqRepository.dart';
+import 'package:devfest_levante_2019/utils/UrlHelper.dart';
+import 'package:devfest_levante_2019/utils/LoadingWidget.dart';
 import 'package:flutter/material.dart';
 
 class FaqPage extends StatelessWidget {

@@ -1,17 +1,16 @@
 
 import 'dart:async';
 
-import 'package:devfest_levante_2018/model/DevFestUser.dart';
-import 'package:devfest_levante_2018/repository/UserRepository.dart';
-import 'package:devfest_levante_2018/ui/SplashScreenPage.dart';
-import 'package:devfest_levante_2018/ui/info/InfoPage.dart';
-import 'package:devfest_levante_2018/ui/schedule/FavouriteSchedulePage.dart';
-import 'package:devfest_levante_2018/ui/schedule/SchedulePage.dart';
+import 'package:devfest_levante_2019/model/DevFestUser.dart';
+import 'package:devfest_levante_2019/repository/UserRepository.dart';
+import 'package:devfest_levante_2019/ui/SplashScreenPage.dart';
+import 'package:devfest_levante_2019/ui/info/InfoPage.dart';
+import 'package:devfest_levante_2019/ui/schedule/FavouriteSchedulePage.dart';
+import 'package:devfest_levante_2019/ui/schedule/SchedulePage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_statusbar_manager/flutter_statusbar_manager.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 
@@ -215,7 +214,6 @@ class HomeScaffoldState extends State<HomePageScaffold> {
   }
 
   void initActionBar() async {
-    await FlutterStatusbarManager.setTranslucent(false);
-    await FlutterStatusbarManager.setStyle(StatusBarStyle.DARK_CONTENT);
+
   }
 }

@@ -1,28 +1,28 @@
 import 'dart:async';
 
-import 'package:devfest_levante_2018/model/DevFestActivity.dart';
+import 'package:devfest_levante_2019/model/DevFestActivity.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:devfest_levante_2018/model/DevFestUser.dart';
+import 'package:devfest_levante_2019/model/DevFestUser.dart';
 
 class ActivitiesRepository {
   static Stream<List<DevFestActivity>> getActivities() {
     return Firestore.instance
-        .collection('talks')
+        .collection('sessions')
         .snapshots()
         .map((snapshot) => (activityMapper(snapshot)));
   }
 
   static Stream<List<DevFestActivity>> getActivitiesByDay(int day) {
     return Firestore.instance
-        .collection('talks')
-        .where("day", isEqualTo: day.toString())
+        .collection('sessions')
+        .where("day", isEqualTo: day)
         .snapshots()
         .map((snapshot) => (activityMapper(snapshot)));
   }
 
   static getFavouriteActivities(List<dynamic> favourites) {
     return Firestore.instance
-        .collection('talks')
+        .collection('sessions')
         .snapshots()
         .map((snapshot) => (favouriteActivityMapper(snapshot, favourites)));
   }
@@ -54,45 +54,19 @@ class ActivitiesRepository {
   }
 
   static DevFestActivity activityParser(DocumentSnapshot document){
-    if (document["type"] == "generic") {
-      // Build new generic
-      return DevFestActivity.generic(
-          document["id"],
-          document["type"],
-          document["title"],
-          document["desc"],
-          document["cover"],
-          document["location"],
-          document["day"],
-          document["start"],
-          document["end"], "");
-    } else if(document["type"] == "talk"){
-      // Build new talk/workshop
+    int startsAt = document["startsAt"];
+    int endsAt = document["endsAt"];
       return DevFestActivity(
           document["id"],
-          document["type"],
+          "type",
           document["title"],
-          document["desc"],
-          document["cover"],
-          document["location"],
+          document["description"],
+          "cover",
+          "location",
           document["day"],
-          document["start"],
-          document["end"],
-          document["speakers"],
-          document["abstract"]);
-    }else{
-      return DevFestActivity(
-          document["id"],
-          document["type"],
-          document["title"],
-          document["desc"],
-          document["cover"],
-          document["location"],
-          document["day"],
-          document["start"],
-          document["end"],
-          document["speakers"],
-          document["abstract"]);
+          DateTime.fromMillisecondsSinceEpoch(startsAt),
+          DateTime.fromMillisecondsSinceEpoch(endsAt),
+          "speakers",
+      "abstract");
     }
-  }
 }

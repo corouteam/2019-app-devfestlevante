@@ -3,7 +3,7 @@ class DevFestActivity {
   String title;
   String desc;
   String cover;
-  String day;
+  int day;
   DateTime start;
   DateTime end;
   String type;

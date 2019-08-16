@@ -1,9 +1,9 @@
-import 'package:devfest_levante_2018/model/DevFestFaq.dart';
-import 'package:devfest_levante_2018/repository/FaqRepository.dart';
-import 'package:devfest_levante_2018/ui/info/AboutPage.dart';
-import 'package:devfest_levante_2018/ui/info/FaqPage.dart';
-import 'package:devfest_levante_2018/ui/info/MapPage.dart';
-import 'package:devfest_levante_2018/utils/DevFestTabTextTheme.dart';
+import 'package:devfest_levante_2019/model/DevFestFaq.dart';
+import 'package:devfest_levante_2019/repository/FaqRepository.dart';
+import 'package:devfest_levante_2019/ui/info/AboutPage.dart';
+import 'package:devfest_levante_2019/ui/info/FaqPage.dart';
+import 'package:devfest_levante_2019/ui/info/MapPage.dart';
+import 'package:devfest_levante_2019/utils/DevFestTabTextTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 

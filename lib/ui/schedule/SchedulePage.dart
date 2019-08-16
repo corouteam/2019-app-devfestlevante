@@ -1,5 +1,5 @@
-import 'package:devfest_levante_2018/utils/DevFestTabTextTheme.dart';
-import 'package:devfest_levante_2018/ui/schedule/SingleSchedulePage.dart';
+import 'package:devfest_levante_2019/utils/DevFestTabTextTheme.dart';
+import 'package:devfest_levante_2019/ui/schedule/SingleSchedulePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
