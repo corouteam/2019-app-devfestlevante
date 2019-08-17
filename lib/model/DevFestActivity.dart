@@ -1,3 +1,5 @@
+import 'package:devfest_levante_2019/model/DevFestMiniSpeaker.dart';
+
 class DevFestActivity {
   String id;
   String title;
@@ -7,7 +9,7 @@ class DevFestActivity {
   DateTime start;
   DateTime end;
   String type;
-  String speakers = "-1";
+  List<DevFestMiniSpeaker>  speakersId = List();
   String abstract;
   String location;
 
@@ -15,5 +17,5 @@ class DevFestActivity {
       this.start, this.end, this.abstract);
 
   DevFestActivity(this.id, this.type, this.title, this.desc, this.cover, this.location, this.day,
-      this.start, this.end, this.speakers, this.abstract);
+      this.start, this.end, this.speakersId, this.abstract);
 }

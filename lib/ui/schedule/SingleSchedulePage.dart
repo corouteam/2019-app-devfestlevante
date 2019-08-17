@@ -2,6 +2,7 @@ import 'package:devfest_levante_2019/repository/ActivitiesRepository.dart';
 import 'package:devfest_levante_2019/model/DevFestActivity.dart';
 import 'package:devfest_levante_2019/model/DevFestSpeaker.dart';
 import 'package:devfest_levante_2019/repository/SpeakersRepository.dart';
+import 'package:devfest_levante_2019/ui/schedule/SpeakersChimpList.dart';
 import 'package:devfest_levante_2019/ui/schedule/TalkPage.dart';
 import 'package:devfest_levante_2019/utils/ColorUtils.dart';
 import 'package:devfest_levante_2019/utils/DateTimeHelper.dart';
@@ -9,10 +10,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+SpeakersRepository speakersRepo;
+
 class SingleSchedulePage extends StatefulWidget{
   SingleSchedulePageState createState() => SingleSchedulePageState(day);
   final int day;
-  const SingleSchedulePage(this.day);
+
+
+  SingleSchedulePage(this.day, repo){
+    speakersRepo = repo;
+  }
 
 }
 
@@ -104,7 +111,7 @@ class ActivityTile extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     TitleWidget(activity),
-                    DescriptionWidget(activity),
+                    //    DescriptionWidget(activity),
                     SpeakerChipWidget(activity),
                   ],
                 ),
@@ -120,7 +127,7 @@ class ActivityTile extends StatelessWidget {
 
     FirebaseAuth.instance.currentUser().then((user) {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => TalkPage(talk, user.uid)));
+          context, MaterialPageRoute(builder: (context) => TalkPage(talk, user.uid, speakersRepo)));
     });
   }
 }
@@ -135,21 +142,8 @@ class SpeakerChipWidget extends GenericScheduleWidget {
     // TODO query Firestore with speakerID
 
     if (activity.type != "activity") {
-      return StreamBuilder(
-        stream: SpeakersRepository.getSpeaker(activity.speakers),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          DevFestSpeaker speaker = snapshot.data;
-          if (!snapshot.hasData) return Container();
-
-          return Chip(
-            backgroundColor: Colors.white,
-            label: Text(speaker.name),
-            avatar: Hero(
-                tag: "anim_speaker_avatar_${activity.id}",
-                child: CircleAvatar(backgroundImage: NetworkImage(speaker.pic))),
-          );
-        },
-      );
+      return SpeakersChimpList(speakersRepo.getSpeakersById(activity.speakersId),
+          activity.id);
     } else {
       return Container();
     }

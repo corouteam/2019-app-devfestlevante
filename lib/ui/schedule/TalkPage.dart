@@ -4,6 +4,7 @@ import 'package:devfest_levante_2019/model/DevFestSpeaker.dart';
 import 'package:devfest_levante_2019/model/DevFestUser.dart';
 import 'package:devfest_levante_2019/repository/SpeakersRepository.dart';
 import 'package:devfest_levante_2019/repository/UserRepository.dart';
+import 'package:devfest_levante_2019/ui/schedule/SpeakersList.dart';
 import 'package:devfest_levante_2019/utils/DateTimeHelper.dart';
 import 'package:devfest_levante_2019/utils/LoadingWidget.dart';
 import 'package:flutter/material.dart';
@@ -11,15 +12,19 @@ import 'package:intl/intl.dart';
 import 'package:share/share.dart';
 
 String speakerName = "";
+SpeakersRepository speakersRepo;
+
 class TalkPage extends StatelessWidget {
   final DevFestActivity talk;
   final String userUid;
 
-  TalkPage(this.talk, this.userUid);
+  TalkPage(this.talk, this.userUid, SpeakersRepository repo) {
+    speakersRepo = repo;
+  }
 
   UserRepository userRepo;
-  share(){
 
+  share(){
       String speakerString = "";
       if (speakerName != "") {
         speakerString = "con $speakerName";
@@ -169,15 +174,12 @@ class ActivityChipWidget extends GenericScheduleWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Hero(
-                tag: "anim_activity_${activity.id}",
-                child: Material(
-                  color: Colors.transparent,
-                  child: Text(
-                    activity.title,
-                    textScaleFactor: 2.0,
-                    style: TextStyle(fontWeight: FontWeight.w500),
-                  ),
+              Material(
+                color: Colors.transparent,
+                child: Text(
+                  activity.title,
+                  textScaleFactor: 2.0,
+                  style: TextStyle(fontWeight: FontWeight.w500),
                 ),
               ),
               SizedBox(
@@ -214,69 +216,7 @@ class SpeakerChipWidget extends GenericScheduleWidget {
   @override
   Widget build(BuildContext context) {
     if (activity.type != "activity") {
-      return StreamBuilder(
-        stream: SpeakersRepository.getSpeaker(activity.speakers),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          DevFestSpeaker speaker = snapshot.data;
-          if (!snapshot.hasData) return Container();
-          speakerName = speaker.name;
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                " SPEAKER",
-                textScaleFactor: 1.5,
-                style: TextStyle(fontWeight: FontWeight.w500),
-              ),
-              SizedBox(
-                height: 24.0,
-              ),
-              Row(
-                children: <Widget>[
-                  Hero(
-                    tag: "anim_speaker_avatar_${activity.id}",
-                    child: CircleAvatar(
-                      backgroundImage: NetworkImage(speaker.pic),
-                      minRadius: 35.0,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 16.0,
-                  ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          speaker.company != "" ? speaker.name+", "+speaker.company : speaker.name,
-                          textScaleFactor: 1.5,
-                          style: TextStyle(fontWeight: FontWeight.w500),
-
-                        ),
-
-                        SizedBox(
-                          height: 8.0,
-                        ),
-                        CommunityChip(speaker),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 16.0,
-              ),
-              Text(
-                speaker.bio,
-                textAlign: TextAlign.justify,
-              ),
-              SizedBox(
-                height: 64.0,
-              ),
-            ],
-          );
-        },
-      );
+      return SpeakersList(speakersRepo.getSpeakersById(activity.speakersId));
     } else {
       return Container();
     }
@@ -311,40 +251,11 @@ class AbstractWidget extends GenericScheduleWidget {
   }
 }
 
-class CommunityChip extends StatelessWidget {
-  DevFestSpeaker speaker;
-  CommunityChip(this.speaker);
-
-  @override
-  Widget build(BuildContext context) {
-    return ((speaker.community != "")
-        ? Chip(
-            label: Text(
-              speaker.community,
-              style: TextStyle(color: Colors.white),
-            ),
-            backgroundColor: getCommunityColor(speaker.type),
-          )
-        : Container());
-  }
-}
-
 _bookmark(UserRepository userRepo, DevFestActivity talk, bool willAdd) {
   if (willAdd) {
     userRepo.addBookmark(talk.id);
   } else {
     userRepo.removeBookmark(talk.id);
-  }
-}
-
-Color getCommunityColor(String type){
-  if(type == "GDG"){
-    return Colors.orange;
-  }else if(type == "GDE"){
-    return Colors.red;
-  }
-  else{
-    return Colors.deepPurpleAccent;
   }
 }
 

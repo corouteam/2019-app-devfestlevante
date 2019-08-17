@@ -1,7 +1,9 @@
 
 import 'dart:async';
 
+import 'package:devfest_levante_2019/model/DevFestSpeaker.dart';
 import 'package:devfest_levante_2019/model/DevFestUser.dart';
+import 'package:devfest_levante_2019/repository/SpeakersRepository.dart';
 import 'package:devfest_levante_2019/repository/UserRepository.dart';
 import 'package:devfest_levante_2019/ui/SplashScreenPage.dart';
 import 'package:devfest_levante_2019/ui/info/InfoPage.dart';
@@ -62,6 +64,9 @@ class HomePageScaffold extends StatefulWidget {
 class HomeScaffoldState extends State<HomePageScaffold> {
   FirebaseUser user;
   DevFestUser devFestUser;
+
+  bool isReady;
+
   int tabPosition = 0;
   var currentPage;
   List<Widget> pages;
@@ -73,40 +78,30 @@ class HomeScaffoldState extends State<HomePageScaffold> {
   void initState() {
     super.initState();
 
-    initActionBar();
+    isReady = false;
 
-    pages = [SchedulePage(), FavouriteSchedulePage(user.uid), InfoPage()];
+    setUpMessaging();
 
-    currentPage = pages[0];
+    SpeakersRepository.getSpeakers().then((speakers) {
+      SpeakersRepository speakerRepo = SpeakersRepository.fromSpeakers(speakers);
 
-    firebaseMessaging.configure(onLaunch: (Map<String, dynamic> msg) {
-      print("on Launch called");
-    }, onResume: (Map<String, dynamic> msg) {
-      print("onResume called");
-    }, onMessage: (Map<String, dynamic> msg) {
-      print("onMessage called");
+      setState(() {
+        pages = [SchedulePage(speakerRepo), FavouriteSchedulePage(user.uid, speakerRepo), InfoPage()];
+        currentPage = pages[0];
+        isReady = true;
+      });
     });
-    firebaseMessaging.requestNotificationPermissions(
-        const IosNotificationSettings(sound: true, alert: true, badge: true));
-    firebaseMessaging.onIosSettingsRegistered.listen((IosNotificationSettings) {
-      print('IOS Settings Registed');
-    });
-    firebaseMessaging.getToken().then((token) async {
-      UserRepository repo = UserRepository(user.uid);
-      var devFestUser = DevFestUser();
-      devFestUser.notificationToken = token;
-      await repo.addFcmToken(devFestUser);
-    });
-    flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
-    var androidLocalNotifications = new AndroidInitializationSettings('mipmap/ic_launcher');
-    var iOSLocalNotifications = new IOSInitializationSettings();
-    var initSettings = new InitializationSettings(androidLocalNotifications, iOSLocalNotifications);
-    flutterLocalNotificationsPlugin.initialize(initSettings);
-
   }
 
   @override
   Widget build(BuildContext context) {
+    if (!isReady) {
+      return Scaffold(
+        backgroundColor: Colors.white,
+        body: Text("Loading..."),
+      );
+    }
+
     final BottomNavigationBar navBar = BottomNavigationBar(
         currentIndex: tabPosition,
         onTap: (int pressedTab) {
@@ -213,7 +208,32 @@ class HomeScaffoldState extends State<HomePageScaffold> {
         body: currentPage);
   }
 
-  void initActionBar() async {
+  void setUpMessaging() {
+    firebaseMessaging.configure(onLaunch: (Map<String, dynamic> msg) {
+      print("on Launch called");
+    }, onResume: (Map<String, dynamic> msg) {
+      print("onResume called");
+    }, onMessage: (Map<String, dynamic> msg) {
+      print("onMessage called");
+    });
 
+    firebaseMessaging.requestNotificationPermissions(
+        const IosNotificationSettings(sound: true, alert: true, badge: true));
+    firebaseMessaging.onIosSettingsRegistered.listen((IosNotificationSettings) {
+      print('IOS Settings Registed');
+    });
+
+    firebaseMessaging.getToken().then((token) async {
+      UserRepository repo = UserRepository(user.uid);
+      var devFestUser = DevFestUser();
+      devFestUser.notificationToken = token;
+      await repo.addFcmToken(devFestUser);
+    });
+
+    flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
+    var androidLocalNotifications = new AndroidInitializationSettings('mipmap/ic_launcher');
+    var iOSLocalNotifications = new IOSInitializationSettings();
+    var initSettings = new InitializationSettings(androidLocalNotifications, iOSLocalNotifications);
+    flutterLocalNotificationsPlugin.initialize(initSettings);
   }
 }
