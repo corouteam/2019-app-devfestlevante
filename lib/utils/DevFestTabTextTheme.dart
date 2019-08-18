@@ -10,8 +10,6 @@ class DevFestTabTextTheme extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      text,
-      style: TextStyle(color: ColorUtils.hexToColor("#676767")),
-    );
+      text);
   }
 }

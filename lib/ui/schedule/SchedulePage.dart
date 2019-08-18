@@ -1,5 +1,7 @@
+import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:devfest_levante_2019/model/DevFestSpeaker.dart';
 import 'package:devfest_levante_2019/repository/SpeakersRepository.dart';
+import 'package:devfest_levante_2019/utils/ColorUtils.dart';
 import 'package:devfest_levante_2019/utils/DevFestTabTextTheme.dart';
 import 'package:devfest_levante_2019/ui/schedule/SingleSchedulePage.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +19,13 @@ class SchedulePage extends StatelessWidget {
       child: Column(
         children: <Widget>[
           TabBar(
+            labelColor: Colors.white,
+            unselectedLabelColor: ColorUtils.hexToColor("#676767"),
+            indicator: BubbleTabIndicator(
+              indicatorHeight: 25.0,
+              indicatorColor: Colors.blueAccent,
+              tabBarIndicatorSize: TabBarIndicatorSize.tab
+            ),
             isScrollable: true,
             tabs: [
               Tab(child: DevFestTabTextTheme("Aug 24")),

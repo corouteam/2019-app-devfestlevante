@@ -42,7 +42,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'DevFest Levante 2018',
+      title: 'DevFest Levante 2019',
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: SplashScreenWidget(),
@@ -58,30 +58,34 @@ class SplashScreenWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays([]);
-    return Center(
-      child: new Column(
-        children: <Widget>[
-          SizedBox(
-            height: 36.0,
-          ),
-          new Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Image(
-              image: AssetImage('assets/heroes_orange_big.png'),
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/home.jpg"),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Center(
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            new Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 42.0),
+              child: Image(
+                image: AssetImage('assets/login.png'),
+              ),
             ),
-          ),
-          SizedBox(
-            height: 24.0,
-          ),
-          RaisedButton(
-              color: Colors.blueAccent,
-              shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
-              textColor: Colors.white,
-              onPressed: () {
-                _handleSignIn(context);
-              },
-              child: Text("Login con Google")),
-        ],
+            SizedBox(height: MediaQuery.of(context).size.height/2),// you will get value which is 1/3rd part of height of your device screen
+            RaisedButton(
+                color: Colors.white,
+                shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+                textColor: Colors.blueAccent,
+                onPressed: () {
+                  _handleSignIn(context);
+                },
+                child: Text("LOGIN WITH GOOGLE",)),
+          ],
+        ),
       ),
     );
   }

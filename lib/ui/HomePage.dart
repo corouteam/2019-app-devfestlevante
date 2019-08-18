@@ -10,6 +10,7 @@ import 'package:devfest_levante_2019/ui/info/AboutPage.dart';
 import 'package:devfest_levante_2019/ui/info/InfoPage.dart';
 import 'package:devfest_levante_2019/ui/schedule/FavouriteSchedulePage.dart';
 import 'package:devfest_levante_2019/ui/schedule/SchedulePage.dart';
+import 'package:devfest_levante_2019/utils/LoadingWidget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +47,7 @@ class HomePage extends StatelessWidget {
             } else {
               // Firebase has not returned data yet. Show loading screen
               // TODO: Maybe replace this with a loading dialog
-              return Scaffold(body: Center(child: Text('Caricamento...')));
+              return Scaffold(body: Center(child: Text('Loading...')));
             }
           },
         ));
@@ -99,7 +100,7 @@ class HomeScaffoldState extends State<HomePageScaffold> {
     if (!isReady) {
       return Scaffold(
         backgroundColor: Colors.white,
-        body: Text("Loading..."),
+        body: LoadingWidget(),
       );
     }
 

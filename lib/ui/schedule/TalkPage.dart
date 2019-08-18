@@ -37,40 +37,42 @@ class TalkPage extends StatelessWidget {
   Widget build(BuildContext context) {
     userRepo = UserRepository(userUid);
     speakerName = "";
-    return Scaffold(
-        body: SingleChildScrollView(child: ActivityChipWidget(talk)),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-      bottomNavigationBar: BottomAppBar(
-        child: new Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            IconButton(icon: Icon(Icons.share,), onPressed: share),
-          ],
+    return SafeArea(
+      child: Scaffold(
+          body: SingleChildScrollView(child: ActivityChipWidget(talk)),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+        bottomNavigationBar: BottomAppBar(
+          child: new Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              IconButton(icon: Icon(Icons.share,), onPressed: share),
+            ],
+          ),
         ),
-      ),
-      floatingActionButton: StreamBuilder(
-          stream: userRepo.getUser(),
-          builder: (context, data) {
-            if (data.hasData) {
-              DevFestUser devFestUser = data.data;
-              var bookmarks;
-              bookmarks = devFestUser.bookmarks;
+        floatingActionButton: StreamBuilder(
+            stream: userRepo.getUser(),
+            builder: (context, data) {
+              if (data.hasData) {
+                DevFestUser devFestUser = data.data;
+                var bookmarks;
+                bookmarks = devFestUser.bookmarks;
 
-              if (bookmarks == null) {
-                bookmarks = List<String>();
-              }
+                if (bookmarks == null) {
+                  bookmarks = List<String>();
+                }
 
-              if (bookmarks.contains(talk.id)) {
-                return BookmarkWidget(userRepo, talk, devFestUser, true);
+                if (bookmarks.contains(talk.id)) {
+                  return BookmarkWidget(userRepo, talk, devFestUser, true);
+                } else {
+                  return BookmarkWidget(userRepo, talk, devFestUser, false);
+                }
               } else {
-                return BookmarkWidget(userRepo, talk, devFestUser, false);
+                return LoadingWidget();
               }
-            } else {
-              return LoadingWidget();
-            }
-          }),
+            }),
 
+      ),
     );
   }
 }
