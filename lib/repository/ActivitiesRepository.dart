@@ -57,7 +57,7 @@ class ActivitiesRepository {
     return activities;
   }
 
-  static DevFestActivity activityParser(DocumentSnapshot document){
+  static DevFestActivity activityParser(DocumentSnapshot document) {
     int startsAt = document["startsAt"];
     int endsAt = document["endsAt"];
     var speakers = List<DevFestMiniSpeaker>();
@@ -68,17 +68,32 @@ class ActivitiesRepository {
       speakers.add(DevFestMiniSpeaker(speaker["id"], speaker["name"]));
     }
 
+    if (document["description"] != null) {
       return DevFestActivity(
           document["id"],
-          "talk",
+          "workshop",
           document["title"],
           document["description"],
-          "cover",
-          "location",
+          "",
+          "",
           document["day"],
           DateTime.fromMillisecondsSinceEpoch(startsAt),
           DateTime.fromMillisecondsSinceEpoch(endsAt),
           speakers,
-      "abstract");
+          "");
+    } else {
+      return DevFestActivity(
+          document["id"],
+          "activity",
+          document["title"],
+          "",
+          "",
+          "",
+          document["day"],
+          DateTime.fromMillisecondsSinceEpoch(startsAt),
+          DateTime.fromMillisecondsSinceEpoch(endsAt),
+          speakers,
+          "");
     }
+  }
 }

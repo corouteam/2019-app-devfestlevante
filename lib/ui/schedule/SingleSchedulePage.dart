@@ -137,10 +137,6 @@ class SpeakerChipWidget extends GenericScheduleWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Only shows my avatar for now \o/
-    // Even if this is really cool, we need to join talk with speakers. Later.
-    // TODO query Firestore with speakerID
-
     if (activity.type != "activity") {
       return SpeakersChimpList(speakersRepo.getSpeakersById(activity.speakersId),
           activity.id);
@@ -183,13 +179,13 @@ class StartTimeWidget extends GenericScheduleWidget {
 
   @override
   Widget build(BuildContext context) {
-    var color = ColorUtils.hexToColor("#676767");
+    var color = Colors.blueAccent;
 
-    if (activity.type == "talk") {
-      color = Colors.blueAccent;
-    } else if (activity.type == "workshop") {
-      color = Colors.deepOrangeAccent;
-    }
+  //  if (activity.type == "talk") {
+  //    color = Colors.blueAccent;
+  //  } else if (activity.type == "workshop") {
+  //    color = Colors.blueAccent;
+  //  }
 
     return Text(DateTimeHelper.formatTime(activity.start),
         textScaleFactor: 1.8,

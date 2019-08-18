@@ -10,15 +10,19 @@ class SpeakersChimpList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
         itemCount: speakers.length,
         itemBuilder: (ctx, index) {
           var speaker = speakers[index];
 
-          return Chip(
-            backgroundColor: Colors.white,
-            label: Text(speaker.name),
-            avatar: CircleAvatar(backgroundImage: NetworkImage(speaker.pic)),
+          return Container(
+            alignment: Alignment.bottomLeft,
+            child: Chip(
+              backgroundColor: Colors.white,
+              label: Text(speaker.name),
+              avatar: CircleAvatar(backgroundImage: NetworkImage(speaker.pic)),
+            ),
           );
     });
   }

@@ -13,7 +13,7 @@ class SchedulePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 8,
+      length: 7,
       child: Column(
         children: <Widget>[
           TabBar(
@@ -26,7 +26,6 @@ class SchedulePage extends StatelessWidget {
               Tab(child: DevFestTabTextTheme("Aug 28")),
               Tab(child: DevFestTabTextTheme("Aug 29")),
               Tab(child: DevFestTabTextTheme("Aug 30")),
-              Tab(child: DevFestTabTextTheme("Aug 31")),
             ],
           ),
           Expanded(
@@ -39,7 +38,6 @@ class SchedulePage extends StatelessWidget {
                 SingleSchedulePage(28, speakersRepo),
                 SingleSchedulePage(29, speakersRepo),
                 SingleSchedulePage(30, speakersRepo),
-                SingleSchedulePage(31, speakersRepo)
               ],
             ),
           )
