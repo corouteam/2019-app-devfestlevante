@@ -5,6 +5,7 @@ import 'package:devfest_levante_2019/model/DevFestSpeaker.dart';
 import 'package:devfest_levante_2019/model/DevFestUser.dart';
 import 'package:devfest_levante_2019/repository/SpeakersRepository.dart';
 import 'package:devfest_levante_2019/repository/UserRepository.dart';
+import 'package:devfest_levante_2019/ui/NotificationsPage.dart';
 import 'package:devfest_levante_2019/ui/SplashScreenPage.dart';
 import 'package:devfest_levante_2019/ui/info/InfoPage.dart';
 import 'package:devfest_levante_2019/ui/schedule/FavouriteSchedulePage.dart';
@@ -135,6 +136,19 @@ class HomeScaffoldState extends State<HomePageScaffold> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           centerTitle: true,
+          actions: <Widget>[
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            NotificationsPage()));
+              },
+              icon: Icon(Icons.notifications,
+              color: Colors.black54,),
+            )
+          ],
           backgroundColor: Colors.white,
           elevation: 0.0,
           // Take user data
@@ -211,10 +225,27 @@ class HomeScaffoldState extends State<HomePageScaffold> {
   void setUpMessaging() {
     firebaseMessaging.configure(onLaunch: (Map<String, dynamic> msg) {
       print("on Launch called");
+      return null;
     }, onResume: (Map<String, dynamic> msg) {
       print("onResume called");
+      return null;
     }, onMessage: (Map<String, dynamic> msg) {
       print("onMessage called");
+      var androidPlatformChannelSpecifics = AndroidNotificationDetails(
+          'devfest_levante', 'DevFest Levante', 'DevFest Levante',
+          importance: Importance.Max, priority: Priority.High, ticker: 'ticker');
+      var iOSPlatformChannelSpecifics = IOSNotificationDetails();
+      var platformChannelSpecifics = NotificationDetails(
+          androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
+
+      flutterLocalNotificationsPlugin.show(0,
+          msg["notification"]["title"],
+          msg["notification"]["body"],
+          platformChannelSpecifics);
+
+      print("onMessageee ${msg.toString()}");
+
+      return null;
     });
 
     firebaseMessaging.requestNotificationPermissions(
@@ -229,6 +260,8 @@ class HomeScaffoldState extends State<HomePageScaffold> {
       devFestUser.notificationToken = token;
       await repo.addFcmToken(devFestUser);
     });
+
+    firebaseMessaging.subscribeToTopic("devfest_levante_2019");
 
     flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
     var androidLocalNotifications = new AndroidInitializationSettings('mipmap/ic_launcher');
