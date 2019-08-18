@@ -6,6 +6,7 @@ import 'package:devfest_levante_2019/repository/SpeakersRepository.dart';
 import 'package:devfest_levante_2019/repository/UserRepository.dart';
 import 'package:devfest_levante_2019/ui/NotificationsPage.dart';
 import 'package:devfest_levante_2019/ui/SplashScreenPage.dart';
+import 'package:devfest_levante_2019/ui/info/AboutPage.dart';
 import 'package:devfest_levante_2019/ui/info/InfoPage.dart';
 import 'package:devfest_levante_2019/ui/schedule/FavouriteSchedulePage.dart';
 import 'package:devfest_levante_2019/ui/schedule/SchedulePage.dart';
@@ -86,7 +87,7 @@ class HomeScaffoldState extends State<HomePageScaffold> {
       SpeakersRepository speakerRepo = SpeakersRepository.fromSpeakers(speakers);
 
       setState(() {
-        pages = [SchedulePage(speakerRepo), FavouriteSchedulePage(user.uid, speakerRepo), InfoPage()];
+        pages = [SchedulePage(speakerRepo), FavouriteSchedulePage(user.uid, speakerRepo), AboutPage()];
         currentPage = pages[0];
         isReady = true;
       });
