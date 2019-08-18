@@ -40,7 +40,7 @@ class FavouriteSchedulePage extends StatelessWidget {
 
                 if (snapshot.data.length == 0) return Container(
                   child: Center(
-                    child: Text("Nessun preferito aggiunto! :)"),
+                    child: Text("No bookmarks added! :)"),
                   ),
                 );
 
@@ -199,11 +199,11 @@ class DateTimeWidget extends GenericScheduleWidget {
   Widget build(BuildContext context) {
     var color = ColorUtils.hexToColor("#676767");
 
-    if (activity.type == "talk") {
-      color = Colors.blueAccent;
-    } else if (activity.type == "workshop") {
-      color = Colors.deepOrangeAccent;
-    }
+    // if (activity.type == "talk") {
+    //  color = Colors.blueAccent;
+    // } else if (activity.type == "workshop") {
+    //   color = Colors.deepOrangeAccent;
+    // }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -212,7 +212,7 @@ class DateTimeWidget extends GenericScheduleWidget {
       children: <Widget>[
         Text(DateTimeHelper.formatSimpleDate(activity.start),
             textScaleFactor: 1.2,
-            style: TextStyle(color: color, fontWeight: FontWeight.w300)),
+            style: TextStyle(color: color, fontWeight: FontWeight.bold)),
         Text(DateTimeHelper.formatTime(activity.start),
             textScaleFactor: 1.8,
             style: TextStyle(color: color, fontWeight: FontWeight.w300)),
