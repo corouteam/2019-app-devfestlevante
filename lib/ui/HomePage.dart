@@ -1,7 +1,6 @@
 
 import 'dart:async';
 
-import 'package:devfest_levante_2019/model/DevFestSpeaker.dart';
 import 'package:devfest_levante_2019/model/DevFestUser.dart';
 import 'package:devfest_levante_2019/repository/SpeakersRepository.dart';
 import 'package:devfest_levante_2019/repository/UserRepository.dart';
@@ -151,7 +150,7 @@ class HomeScaffoldState extends State<HomePageScaffold> {
                             NotificationsPage()));
               },
               icon: Icon(Icons.notifications,
-              color: Colors.black54,),
+              color: Colors.black87,),
             )
           ],
           backgroundColor: Colors.white,

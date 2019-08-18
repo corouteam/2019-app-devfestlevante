@@ -26,11 +26,23 @@ class NotificationsPage extends StatelessWidget {
         stream: NotificationsRepository.getNotifications(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
+            if (snapshot.data.length == 0) {
+              return Container(
+                child: Center(
+                  child: Text("No new notification!"),
+                ),
+              );
+            }
             return ListView.builder(
               itemCount: snapshot.data.length,
               itemBuilder: (context, i) {
                 DevFestNotification notification = snapshot.data[i];
                 return ListTile(
+                  leading: CircleAvatar(
+                    child: Icon(Icons.notifications_none,
+                    color: Colors.white,),
+                    backgroundColor: Colors.black45,
+                  ),
                   title: Text(notification.body),
                   subtitle: Text(DateTimeHelper.formatToHumanReadableDifference(
                       notification.timestamp)),
