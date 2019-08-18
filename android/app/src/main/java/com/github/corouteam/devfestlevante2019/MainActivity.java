@@ -5,6 +5,8 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.core.content.ContextCompat;
+
+import android.view.View;
 import android.view.WindowManager;
 
 import io.flutter.app.FlutterActivity;
@@ -15,9 +17,12 @@ public class MainActivity extends FlutterActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     GeneratedPluginRegistrant.registerWith(this);
-/*      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-          getWindow().setStatusBarColor(0x00000000);
-      }*/
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        int flags = getFlutterView().getSystemUiVisibility();
+        flags |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+        getFlutterView().setSystemUiVisibility(flags);
+        this.getWindow().setStatusBarColor(Color.WHITE);
+      }
   }
 
   public static void changeStatusBarColor(Activity act) {
