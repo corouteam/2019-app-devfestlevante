@@ -18,19 +18,19 @@ exports.sendNotification = functions.firestore.document('appNotifications/{id}')
 });
 
 exports.createNotification = functions.firestore.document('createAppNotifications/{id}')
-.onCreate((snapshot, context) => {
+.onCreate(snapshot => {
 
     var notificationMessage = snapshot.data().message;
-    var notificationType = snapshot.data().type;
+    var notificationType = snapshot.data().type === undefined ? "generic" : snapshot.data().type;
     
     var timestamp = (new Date()).getTime();
     
-    admin.firestore().doc('appNotifications/' + timestamp).set({
+    return admin.firestore().doc('appNotifications/' + timestamp).set({
         message: notificationMessage,
         timestamp: timestamp,
-        type: notificationType === null ? "generic" : notificationType
-    }).then(function (snapshot) {
-        return admin.firestore().doc('createAppNotifications/' + timestamp).delete();
+        type: notificationType
+    }).then(function (snapshot2) {
+        return admin.firestore().doc(snapshot.ref.path).delete();
     }).catch(function (error) {
         return console.log(error);
     });
