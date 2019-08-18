@@ -103,7 +103,12 @@ class HomeScaffoldState extends State<HomePageScaffold> {
       );
     }
 
-    final BottomNavigationBar navBar = BottomNavigationBar(
+    final Container navBar =
+    Container(
+      // WORKAROUND for material shadow: https://github.com/flutter/flutter/issues/27585
+      decoration: BoxDecoration(
+          boxShadow: [BoxShadow(color: Colors.black54, blurRadius: 6)]),
+      child: BottomNavigationBar(
         currentIndex: tabPosition,
         onTap: (int pressedTab) {
           setState(() {
@@ -119,18 +124,18 @@ class HomeScaffoldState extends State<HomePageScaffold> {
                 style: TextStyle(fontWeight: FontWeight.bold),
               )),
           BottomNavigationBarItem(
-              icon: Icon(Icons.favorite),
+              icon: Icon(Icons.favorite_border),
               title: Text(
                 "Preferiti",
                 style: TextStyle(fontWeight: FontWeight.bold),
               )),
           BottomNavigationBarItem(
-              icon: Icon(Icons.info),
+              icon: Icon(Icons.info_outline),
               title: Text(
                 "Info",
                 style: TextStyle(fontWeight: FontWeight.bold),
               ))
-        ]);
+        ]),);
 
     return Scaffold(
         backgroundColor: Colors.white,
@@ -212,12 +217,12 @@ class HomeScaffoldState extends State<HomePageScaffold> {
         ),
         bottomNavigationBar: new Theme(
             data: Theme.of(context).copyWith(
-                canvasColor: Colors.blueAccent,
-                primaryColor: Colors.white,
+                canvasColor: Colors.white,
+                primaryColor: Colors.blueAccent,
                 textTheme: Theme
                     .of(context)
                     .textTheme
-                    .copyWith(caption: new TextStyle(color: Colors.white70))),
+                    .copyWith(caption: new TextStyle(color: Colors.black54))),
             child: navBar),
         body: currentPage);
   }
