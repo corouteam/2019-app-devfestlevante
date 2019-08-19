@@ -36,7 +36,7 @@ class FavouriteSchedulePage extends StatelessWidget {
               stream: ActivitiesRepository.getFavouriteActivities(
                   user.bookmarks),
               builder: (context, snapshot) {
-                if (!snapshot.hasData) return LoadingWidget();
+                if (!snapshot.hasData) return Container(child: Center(child: Text("No bookmarks added! :)"),),);
 
                 if (snapshot.data.length == 0) return Container(
                   child: Center(

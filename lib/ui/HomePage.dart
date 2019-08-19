@@ -121,13 +121,13 @@ class HomeScaffoldState extends State<HomePageScaffold> {
           BottomNavigationBarItem(
               icon: Icon(Icons.schedule),
               title: Text(
-                "Programma",
+                "Schedule",
                 style: TextStyle(fontWeight: FontWeight.bold),
               )),
           BottomNavigationBarItem(
               icon: Icon(Icons.favorite_border),
               title: Text(
-                "Preferiti",
+                "Bookmarks",
                 style: TextStyle(fontWeight: FontWeight.bold),
               )),
           BottomNavigationBarItem(
@@ -239,6 +239,7 @@ class HomeScaffoldState extends State<HomePageScaffold> {
       print("onMessage called");
       var androidPlatformChannelSpecifics = AndroidNotificationDetails(
           'devfest_levante', 'DevFest Levante', 'DevFest Levante',
+          icon: 'mipmap/ic_launcher',
           importance: Importance.Max, priority: Priority.High, ticker: 'ticker');
       var iOSPlatformChannelSpecifics = IOSNotificationDetails();
       var platformChannelSpecifics = NotificationDetails(
