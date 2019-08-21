@@ -41,7 +41,7 @@ class SpeakersList extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          speaker.tagline != "" ? speaker.name+", "+speaker.tagline: speaker.name,
+                          speaker.name,
                           textScaleFactor: 1.5,
                           style: TextStyle(fontWeight: FontWeight.w500),
 

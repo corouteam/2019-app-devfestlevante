@@ -42,10 +42,8 @@ class TalkPage extends StatelessWidget {
           body: SingleChildScrollView(child: ActivityChipWidget(talk)),
         floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
         bottomNavigationBar: Container(
-          // WORKAROUND for material shadow: https://github.com/flutter/flutter/issues/27585
-          decoration: BoxDecoration(
-              boxShadow: [BoxShadow(color: Colors.black54, blurRadius: 4)]),
           child: BottomAppBar(
+            shape: CircularNotchedRectangle(),
             child: new Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
