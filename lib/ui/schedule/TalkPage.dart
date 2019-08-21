@@ -168,7 +168,7 @@ class ActivityChipWidget extends GenericScheduleWidget {
                 child: IconButton(
               icon: Icon(
                 Icons.arrow_back,
-                color: Colors.white70,
+                color: Colors.black54,
               ),
                   onPressed: () {
                     Navigator.pop(context);
