@@ -15,12 +15,12 @@ class DateTimeHelper {
   }
 
   static String formatTalkDateTimeStart(DateTime dateTime) {
-    final dateFormat = new  DateFormat.MMMEd("en_US").add_jm();
+    final dateFormat = new  DateFormat('EEE, HH:mm');
     return dateFormat.format(dateTime);
   }
 
   static String formatTalkTimeEnd(DateTime dateTime) {
-    final dateFormat = new  DateFormat('HH:mm a');
+    final dateFormat = new  DateFormat('HH:mm');
     return dateFormat.format(dateTime);
   }
 
