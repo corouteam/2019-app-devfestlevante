@@ -1,5 +1,4 @@
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
-import 'package:devfest_levante_2019/model/DevFestSpeaker.dart';
 import 'package:devfest_levante_2019/repository/SpeakersRepository.dart';
 import 'package:devfest_levante_2019/utils/ColorUtils.dart';
 import 'package:devfest_levante_2019/utils/DevFestTabTextTheme.dart';
@@ -14,7 +13,11 @@ class SchedulePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var day = new DateTime.now().day;
+    var index = day - 24;
+
     return DefaultTabController(
+      initialIndex: index > 0 ? index : 0,
       length: 7,
       child: Column(
         children: <Widget>[

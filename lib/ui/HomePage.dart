@@ -7,7 +7,6 @@ import 'package:devfest_levante_2019/repository/UserRepository.dart';
 import 'package:devfest_levante_2019/ui/NotificationsPage.dart';
 import 'package:devfest_levante_2019/ui/SplashScreenPage.dart';
 import 'package:devfest_levante_2019/ui/info/AboutPage.dart';
-import 'package:devfest_levante_2019/ui/info/InfoPage.dart';
 import 'package:devfest_levante_2019/ui/schedule/FavouriteSchedulePage.dart';
 import 'package:devfest_levante_2019/ui/schedule/SchedulePage.dart';
 import 'package:devfest_levante_2019/utils/LoadingWidget.dart';
